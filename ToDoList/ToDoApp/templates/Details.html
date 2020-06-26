@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<div class="container" style="margin-top:5%">
+     <form action="{% url 'Todourls:Update' dataedit.list_id %}" method="POST">
+         {% csrf_token %}
+    <div class="row justify-content-center align-items-center">
+       <strong>Text:</strong> <input type="text" class="mb-2 col-md-5" name="content" id="inlineFormInputName2" value="{{dataedit.text}}">
+    </div>
+    <div class="row justify-content-center align-items-center">
+        <strong>Modified Date:</strong>{{dataedit.created_date}}
+     </div>
+     <div class="row justify-content-center align-items-center">
+
+              <button type="submit" class="btn btn-primary mb-2">Update</button>
+
+
+     </div>
+               </form>
+
+</div>
+
+
+
+
+
+{% endblock%}

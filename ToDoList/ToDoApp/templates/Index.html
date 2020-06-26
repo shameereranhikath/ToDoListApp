@@ -1,0 +1,55 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<!--<div class="divTt">fsfdfsdf gtretertertr</div>-->
+<div class="row">
+    <div class="col-md-10">
+<!--        <form class="form-inline" method="POST" action="{% url  'Todourls:AddItem' %}">-->
+<!--            {% csrf_token %}-->
+<!--            <input type="text" class="form-control mb-2 col-md-5" name="content" id="inlineFormInputName2" placeholder="EnterToDo List Item">-->
+<!--            &nbsp;<button type="submit" class="btn btn-primary mb-2">Add Item</button>-->
+
+<!--        </form>-->
+    </div>
+</div>
+
+
+
+
+<table class="table table-dark">
+    <thead>
+      <tr>
+        <th scope="col">SI.NO</th>
+        <th scope="col">CREATED DATE</th>
+        <th scope="col">DETAIL</th>
+        <th scope="col"></th>
+
+      </tr>
+    </thead>
+    <tbody>
+        {% for Toda in TodaData %}
+      <tr>
+        <td>{{forloop.counter}} </td>
+        <td> {{Toda.created_date}}</td>
+        <td> {{Toda.text}}</td>
+        <td>
+            <form class="d-inline-block" action="{% url 'Todourls:Delete' Toda.list_id  %}" method="POST">
+                {% csrf_token %}
+                <button type="submit" class="btn btn-danger" value="delete">Delete</button>
+            </form>
+        </td>
+          <td>
+               <form class="d-inline-block" action="{% url 'Todourls:Edit' Toda.list_id %}" method="POST">
+                 {% csrf_token %}
+                <button type="submit" style="width:100%"  class="btn btn-danger" value="edit">Edit  </button>
+                 </form>
+          </td>
+      </tr>
+      {%endfor%}
+      </tbody>
+</table>
+
+
+
+
+{%endblock%}

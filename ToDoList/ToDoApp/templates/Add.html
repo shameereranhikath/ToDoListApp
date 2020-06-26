@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="row">
+    <div class="col-md-10">
+        <form class="form-inline" method="POST" action="{% url  'Todourls:AddItem' %}">
+            {% csrf_token %}
+            <input type="text" class="form-control mb-2 col-md-5" name="content" id="inlineFormInputName2" placeholder="EnterToDo List Item">
+            &nbsp;<button type="submit" class="btn btn-primary mb-2">Add Item</button>
+
+        </form>
+
+        {{msg}}
+
+    </div>
+</div>
+
+
+
+{% endblock%}
